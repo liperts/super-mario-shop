@@ -45,6 +45,8 @@ namespace SuperMarioShop
             // services.AddTransient<IProductRepository, MockProductRepository>();
             // services.AddTransient<ICategoryRepository, MockCategoryRepository>();
 
+            services.BuildServiceProvider().GetService<AppDbContext>().Database.Migrate();
+
             // We don't need to change anything in our controller because we are using 
             // interfaces to inject and dependency injection that will return 
             // the second parameter from this configuration below (real repositories)
