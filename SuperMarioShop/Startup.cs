@@ -27,7 +27,9 @@ namespace SuperMarioShop
         {
             _configurationRoot = new ConfigurationBuilder()
                 .SetBasePath(hostingEnviroment.ContentRootPath)
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{hostingEnviroment.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables()
                 .Build();
         }
 
